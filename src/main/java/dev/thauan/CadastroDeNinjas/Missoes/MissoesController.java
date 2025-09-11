@@ -14,21 +14,22 @@ public class MissoesController {
         this.missoesService = missoesService;
     }
 
+    // Criar nova missao
+    @PostMapping("/criar")
+    public String criarMissao(){
+        return "Missao criada";
+    }
+    
     // Listar todas missoes
     @GetMapping("/listar")
     public List<MissoesModel> listarMissao(){
         return missoesService.listarMissoes();
     }
 
-    @GetMapping("/listarId")
-    public String listarMissaoPorId(){
-        return "Missoes listadas";
-    }
-
-    // Criar nova missao
-    @PostMapping("/criar")
-    public String criarMissao(){
-        return "Missao criada";
+    // Listar todas missoes por ID
+    @GetMapping("/listar/{id}")
+    public MissoesModel listarMissaoPorId(@PathVariable Long id){
+        return missoesService.listarMissoesPorId(id);
     }
 
     // Atualizar missao
