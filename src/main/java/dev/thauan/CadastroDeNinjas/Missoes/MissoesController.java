@@ -1,5 +1,6 @@
 package dev.thauan.CadastroDeNinjas.Missoes;
 
+import dev.thauan.CadastroDeNinjas.Ninjas.NinjaModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,10 +17,10 @@ public class MissoesController {
 
     // Criar nova missao
     @PostMapping("/criar")
-    public String criarMissao(){
-        return "Missao criada";
+    public MissoesModel criarMissao(@RequestBody MissoesModel missoes){
+        return missoesService.criarMissao(missoes);
     }
-    
+
     // Listar todas missoes
     @GetMapping("/listar")
     public List<MissoesModel> listarMissao(){
